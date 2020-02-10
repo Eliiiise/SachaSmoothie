@@ -9,7 +9,7 @@ export default class NameUser extends Component {
 
     render() {
         return (
-            <TextInput style={[styles.input, {opacity:this.state.op}]} value={this.state.text}  maxLength = {20} onFocus={() => this.setState({text: '', op: 0.8})} onChangeText={(text)  => {this.setState({text}); console.log(this.state.text); }}/>
+            <TextInput style={[styles.input, {opacity:this.state.op}]} value={this.state.text}  maxLength = {20} onFocus={() => this.setState({text: '', op: 0.8})} onChangeText={(e)  => {this.setState({text:e}); this.props.setName(e); }}/>
             );
     }
 }

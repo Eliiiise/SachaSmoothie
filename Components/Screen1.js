@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {StyleSheet, Text, View, Image, KeyboardAvoidingView, Keyboard, Button} from 'react-native';
 import * as Font from 'expo-font';
 import  ButtonTest  from "./Button.js";
@@ -7,25 +7,34 @@ import  ProgressBare  from "./Progress.js";
 import  EndSacha  from "./End.js";
 import ProgressBar from "react-native-web/src/exports/ProgressBar";
 
-export default function Screen1() {
+export default function Screen1({navigation}) {
+    const stape=40;
+    const [name, setName] = useState('Prénom');
+    function pressed() {
+        Keyboard.dismiss();
+        if (name!='Prénom' && name!=' ' && name!='' ){
+        navigation.navigate('Screen2', {name: 'Elise'});
+        }
+    }
     return (
+        console.log(name),
         <KeyboardAvoidingView style={styles.container} behavior="position" enabled>
             <Image  style={{ marginTop:-70, alignSelf:'center', position:'absolute'}} source={require("../assets/wave.png")} />
-            <Text style={[styles.title, { marginTop:100}]}>
+            <Text style={[styles.title, { marginTop:10}]}>
                 Hello,{'\n'}moi c'est Sacha !
             </Text>
-            <Image  style={{width: 120, height: 190, alignSelf:'center',}} source={require("../assets/sacha.png")} />
+            <Image  style={{width: 80, height: 150, alignSelf:'center',}} source={require("../assets/sacha.png")} />
             <Text style={styles.text}>
                 Je vais t'aider à choisir ton smoothie du jour.
             </Text>
             <Text style={styles.title}>
                 Et toi tu t'appelles comment ?
             </Text>
-            <NameUser/>
+            <NameUser setName={setName}/>
             <View style={styles.button}>
-                <ButtonTest/>
+                <ButtonTest pressed={pressed} />
             </View>
-            <ProgressBare/><EndSacha/>
+            <ProgressBare stape={stape}/><EndSacha/>
         </KeyboardAvoidingView>
     );
 

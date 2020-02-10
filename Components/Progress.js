@@ -6,7 +6,7 @@ class ProgressBare extends Component {
     render() {
         return (
             <View style={styles.main}>
-                <View style={styles.second}>
+                <View style={[styles.second, {width:this.props.stape}]}>
                 </View>
             </View>
         )
@@ -26,7 +26,6 @@ const styles = StyleSheet.create({
         borderRadius:10,
     },
     second: {
-        width: 50,
         height: 5,
         backgroundColor: '#ffffff',
         opacity: 1,

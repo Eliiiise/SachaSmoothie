@@ -8,7 +8,7 @@ class ButtonTest extends Component {
     }
     render() {
         return (
-            <Button style={styles.button}  onPress={() => {Keyboard.dismiss(); }} title="Valider" />
+            <Button style={styles.button} onPress={this.props.pressed} title="Valider" />
         )
     }
 }
