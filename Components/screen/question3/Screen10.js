@@ -1,37 +1,28 @@
-import React from 'react';
+import React ,{ Component } from 'react';
 import {StyleSheet, Text, View, Image, KeyboardAvoidingView, Keyboard, Button, TouchableOpacity} from 'react-native';
 import * as Font from 'expo-font';
-import  ButtonTest  from "./Button.js";
-import  NameUser  from "./Name.js";
-import  ProgressBare  from "./Progress.js";
-import  EndSacha  from "./End.js";
+import  ButtonTest  from "../../Button.js";
+import  NameUser  from "../../Name.js";
+import  ProgressBare  from "../../Progress.js";
+import  EndSacha  from "../../End.js";
 import ProgressBar from "react-native-web/src/exports/ProgressBar";
+import Reponse from "../../Reponse";
 
-export default function Screen2({navigation}) {
-    const stape=80;
-    const nom="Louise";
+export default function Screen4({route , navigation}) {
+    const { name } = route.params;
+    const stape=120;
+    const pressed = (nextPage) => {
+        navigation.navigate(nextPage, {name: name});
+    }
     return (
         <KeyboardAvoidingView style={styles.container} behavior="position" enabled>
-            <Image  style={{ marginTop:-70, alignSelf:'center', position:'absolute'}} source={require("../assets/wave.png")} />
+            <Image  style={{ marginTop:-70, alignSelf:'center', position:'absolute'}} source={require("../../../assets/wave.png")} />
             <Text style={[styles.title, { marginTop:30}]}>
-                Comment ca va aujourd’hui {nom} ?
+                tu es plus ...
             </Text>
-            <Image  style={{width: 60, height: 90, alignSelf:'flex-end', marginTop:-80}} source={require("../assets/sacha.png")} />
-            <TouchableOpacity style={[styles.casereponse, {marginTop:120}]}>
-                <Text style={styles.reponse}>
-                    A merveille
-                </Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.casereponse}>
-                <Text style={styles.reponse}>
-                    Bof aujourd'hui
-                </Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={[styles.casereponse, {marginBottom:60}]}>
-                <Text style={styles.reponse}>
-                    Je suis a bout !
-                </Text>
-            </TouchableOpacity>
+            <Image  style={{width: 60, height: 90, alignSelf:'flex-end', marginTop:-80}} source={require("../../../assets/sacha.png")} />
+            <Reponse text={"bonbon"} marginTop={160} marginBottom={10} pressed={pressed} nextScreen={"Tagada"}/>
+            <Reponse text={"cacahuette"} marginTop={10} marginBottom={100} pressed={pressed} nextScreen={"Banane"}/>
             <ProgressBare stape={stape}/><EndSacha/>
         </KeyboardAvoidingView>
     );

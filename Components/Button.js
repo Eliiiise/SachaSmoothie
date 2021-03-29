@@ -8,7 +8,7 @@ class ButtonTest extends Component {
     }
     render() {
         return (
-            <Button style={styles.button} onPress={this.props.pressed} title="Valider" />
+            <Button style={styles.button} onPress={this.props.pressed} title={this.props.text} />
         )
     }
 }
@@ -17,10 +17,9 @@ export default ButtonTest;
 
 const styles = StyleSheet.create({
     button: {
-        flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        width: 160,
+        width: 100,
         height: 400,
         marginTop: 100,
     },

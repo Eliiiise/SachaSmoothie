@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, View, Image, KeyboardAvoidingView, Keyboard, Button} from 'react-native';
 import * as Font from 'expo-font';
-import  ButtonTest  from "./Button.js";
-import  NameUser  from "./Name.js";
-import  ProgressBare  from "./Progress.js";
-import  EndSacha  from "./End.js";
-import ProgressBar from "react-native-web/src/exports/ProgressBar";
+import  ButtonTest  from "../Button.js";
+import  NameUser  from "../Name.js";
+import  ProgressBare  from "../Progress.js";
+import  EndSacha  from "../End.js";
 
 export default function Screen1({navigation}) {
     const stape=40;
@@ -13,17 +12,16 @@ export default function Screen1({navigation}) {
     function pressed() {
         Keyboard.dismiss();
         if (name!='Prénom' && name!=' ' && name!='' ){
-        navigation.navigate('Screen2', {name: 'Elise'});
+        navigation.navigate('Screen2', {name: name});
         }
     }
     return (
-        console.log(name),
         <KeyboardAvoidingView style={styles.container} behavior="position" enabled>
-            <Image  style={{ marginTop:-70, alignSelf:'center', position:'absolute'}} source={require("../assets/wave.png")} />
+            <Image  style={{ marginTop:-70, alignSelf:'center', position:'absolute'}} source={require("../../assets/wave.png")} />
             <Text style={[styles.title, { marginTop:10}]}>
                 Hello,{'\n'}moi c'est Sacha !
             </Text>
-            <Image  style={{width: 80, height: 150, alignSelf:'center',}} source={require("../assets/sacha.png")} />
+            <Image  style={{width: 80, height: 150, alignSelf:'center',}} source={require("../../assets/sacha.png")} />
             <Text style={styles.text}>
                 Je vais t'aider à choisir ton smoothie du jour.
             </Text>
@@ -32,7 +30,7 @@ export default function Screen1({navigation}) {
             </Text>
             <NameUser setName={setName}/>
             <View style={styles.button}>
-                <ButtonTest pressed={pressed} />
+                <ButtonTest text={"valider"} pressed={pressed} />
             </View>
             <ProgressBare stape={stape}/><EndSacha/>
         </KeyboardAvoidingView>
